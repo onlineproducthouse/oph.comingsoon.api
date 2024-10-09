@@ -1,0 +1,43 @@
+{
+  "name": "oph.api.comingsoon",
+  "version": "1.0.0",
+  "description": "OPH Coming Soon API",
+  "main": "lib/index.js",
+  "repository": "git",
+  "author": "Bongani Masuku<bongani@1702tech.com>",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=22.9"
+  },
+  "scripts": {
+    "clean:all": "yarn clean && yarn clean:modules",
+    "clean": "rm -rf lib types",
+    "clean:modules": "rm -rf node_modules",
+    "build": "tsc",
+    "dev": "ts-node src/index.ts",
+    "serve": "node lib/index.js",
+    "docker": "docker compose -f 'docker-compose.yml' up --build",
+    "docker:clean": "docker stop $(docker ps -aq) && docker rm $(docker ps -aq) -f && docker rmi $(docker images -q) -f"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.5",
+    "@types/uuid": "^10.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.8.1",
+    "@typescript-eslint/parser": "^8.8.1",
+    "eslint": "^9.12.0",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.7.0",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "uuid": "^10.0.0"
+  },
+  "packageManager": "yarn@4.5.0"
+}
