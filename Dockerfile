@@ -6,15 +6,24 @@ FROM ${IMAGE_REGISTRY_BASE_URL}/node:22.9-alpine AS builder
 
 LABEL maintainer="Bongani Masuku <bongani@1702tech.com>"
 
-RUN mkdir -p /app && chown -R node:node /app/
+RUN mkdir -p /home/node/app/ && chown -R node:node /home/node/app
 
-COPY ./src /app/src
-COPY ./yarn.lock /app/yarn.lock
-COPY ./package.json /app/package.json
-COPY ./tsconfig.json /app/tsconfig.json
+WORKDIR /home/node/app/
 
-WORKDIR /app
+USER node
 
-RUN corepack enable && yarn set version berry && yarn && yarn build
+COPY --chown=node:node package.json ./
 
-ENTRYPOINT [ "sh", "-c", "yarn serve" ]
+RUN npm run clean && npm i
+
+#==================================================================
+
+FROM builder
+
+COPY ./src ./src
+COPY ./package.json ./package.json
+COPY ./tsconfig.json ./tsconfig.json
+
+RUN npm run build
+
+ENTRYPOINT [ "sh", "-c", "npm run serve" ]
