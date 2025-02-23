@@ -5,6 +5,9 @@ import { _config } from "./config"
 import cors from "cors"
 
 const __config = _config()
+
+console.log(__config)
+
 const app: Express = express()
 
 app.use(cors())
