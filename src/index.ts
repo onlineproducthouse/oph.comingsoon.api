@@ -14,7 +14,7 @@ app.use(RequestIdGenerator())
 
 app.get('/api/HealthCheck/Ping', async (_: any, res: any) => res.status(200).send({
   statusCode: 200,
-  message: "Ok"
+  message: "Ok: Project: " + __config.forProject
 }))
 
 app.use((error: Error, _req: any, res: any, _next: any) => res.status(500).send({
