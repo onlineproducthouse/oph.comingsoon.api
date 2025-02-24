@@ -22,4 +22,4 @@ app.use((error: Error, _req: any, res: any, _next: any) => res.status(500).send(
   message: error.message
 }))
 
-app.listen(__config.port, () => console.log(`[server]: Coming Soon API is running at: ${__config.protocol}://${__config.host}:${__config.port}`))
+app.listen(__config.port, () => console.log(`[server]: Coming Soon API for project "${__config.forProject}" is running at: ${__config.protocol}://${__config.host}:${__config.port}`))
