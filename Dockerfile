@@ -2,7 +2,7 @@
 
 ARG IMAGE_REGISTRY_BASE_URL
 
-FROM ${IMAGE_REGISTRY_BASE_URL}/node:22.9-alpine AS builder
+FROM ${IMAGE_REGISTRY_BASE_URL}/node:22.9-alpine3.21 AS builder
 
 LABEL maintainer="Bongani Masuku <bongani@1702tech.com>"
 
