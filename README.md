@@ -1,61 +1,45 @@
-# OPH HTML 2 PDF Converter API
+# Getting started
 
-## Config
-
-Create the `.env` file.
-
+## Variables
+The project expects the following environment variables are set:
 ```bash
-aws s3 cp "s3://oph-devtools-shared-storage/oph/scripts/local-env-vars.sh" "$HOME/oph-local-env-vars.sh"
+export COMINGSOON_PROTOCOL='http'
+export COMINGSOON_HOST='localhost'
+export COMINGSOON_PORT='8000'
+export COMINGSOON_FOR_PROJECT='ComingSoon'
 ```
 
+And this variable for building the docker image. You can use a private repository or docker's url:
 ```bash
-bash "$HOME/oph-local-env-vars.sh" "eu-west-1" "/oph/config/shared;/oph/config/local" $(pwd)
+export IMAGE_REGISTRY_BASE_URL=registry.hub.docker.com/node
 ```
 
-## Use case: maintenace
-
-### Running API
-
-To start the API, first you need to install dependencies by executing following commands:
-
+## Running the API
+Start here:
 ```bash
- $ yarn clean:all
- $ yarn
+npm i
 ```
 
-If you want to run the development version, execute:
+### For production
+If you are building for production, run this command, otherwise you may skip it:
 ```bash
-$ yarn dev
+npm run build
 ```
 
-If you want to run the production version, execute:
+To run the production build, run this command:
 ```bash
-$ yarn build
-$ yarn serve
+npm run serve
 ```
 
-Now you can either run the VSCode debugger to execute the project or execute the command:
+### For development
+For development purposes we have two approaches, one for running with NPM and another for using Docker.
 
+The NPM approach:
 ```bash
-$ export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst) && go run ./oph.api.app/main.go
+npm run dev
 ```
 
-In the logs, the API will output something like:
-
+The Docker approach:
 ```bash
-[server]: HTML 2 PDF Converter is running at: http://127.0.0.1:7891
-```
-
-This indicates the API has started.
-
-To have environment dependencies set up, execute command:
-
-```bash
-$ export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst) &&  docker-compose -f 'docker-compose.yml' up --build
-```
-
-# if you get an auth error for `docker login`, enter the following command:
-
-```bash
-$ export $(echo $(cat .env | sed 's/#.*//g'| xargs) | envsubst) &&  echo $(aws ecr get-login-password | docker login --username AWS --password-stdin $IMAGE_REGISTRY_BASE_URL)
+npm run docker
 ```
