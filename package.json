@@ -1,5 +1,5 @@
 {
-  "name": "oph.api.comingsoon",
+  "name": "oph.comingsoon.api",
   "version": "0.0.0",
   "description": "OPH Coming Soon API",
   "main": "lib/index.js",
