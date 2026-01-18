@@ -11,7 +11,7 @@ export COMINGSOON_FOR_PROJECT='ComingSoon'
 
 And this variable for building the docker image. You can use a private repository or docker's url:
 ```bash
-export IMAGE_REGISTRY_BASE_URL=registry.hub.docker.com/node
+export IMAGE_REGISTRY_BASE_URL=registry.hub.docker.com
 ```
 
 ## Running the API
