@@ -1,45 +1,46 @@
-# Getting started
+# oph.comingsoon.api
 
-## Variables
-The project expects the following environment variables are set:
+A coming soon API container project used as a placeholder in the project: [oph.tf.env](https://github.com/onlineproducthouse/oph.tf.env)
+
+## Installation
+
 ```bash
+# clone repository
+mkdir oph.comingsoon.api
+cd oph.comingsoon.api
+git clone https://github.com/onlineproducthouse/oph.comingsoon.api.git .
+
+# install dependencies
+npm i
+
+# build project
+npm run build
+```
+
+## Usage
+
+```bash
+# set to either: local, test, qa, prod
+export ENVIRONMENT_NAME=local
+
+# set environment variables for the postgres database instance
 export COMINGSOON_PROTOCOL='http'
 export COMINGSOON_HOST='localhost'
 export COMINGSOON_PORT='8000'
 export COMINGSOON_FOR_PROJECT='ComingSoon'
-```
 
-And this variable for building the docker image. You can use a private repository or docker's url:
-```bash
-export IMAGE_REGISTRY_BASE_URL=registry.hub.docker.com
-```
+# run the API
+npm run serve
 
-## Running the API
-Start here:
-```bash
-npm i
-```
-
-### For production
-If you are building for production, run this command, otherwise you may skip it:
-```bash
-npm run build
-```
-
-To run the production build, run this command:
-```bash
+# run the API for development purposes
 npm run serve
 ```
 
-### For development
-For development purposes we have two approaches, one for running with NPM and another for using Docker.
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first
+to discuss what you would like to change.
 
-The NPM approach:
-```bash
-npm run dev
-```
+Please make sure to update tests as appropriate.
 
-The Docker approach:
-```bash
-npm run docker
-```
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
