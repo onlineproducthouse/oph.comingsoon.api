@@ -4,7 +4,7 @@
   "description": "OPH Coming Soon API",
   "main": "lib/index.js",
   "repository": "git",
-  "author": "Bongani Masuku<bongani@1702tech.com>",
+  "author": "onlineproducthouse<info@onlineproducthouse.com>",
   "license": "MIT",
   "private": true,
   "engines": {
